@@ -999,6 +999,10 @@ a {
     border-radius: 999px;
   }
 
+  .bloque-info {
+    display: none;
+  }
+
   .hero-texto h1 {
     font-size: clamp(40px, 14vw, 62px);
   }
