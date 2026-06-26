@@ -29,6 +29,8 @@
     </nav>
   </header>
 
+  <div class="menu-overlay" id="menuOverlay"></div>
+
   <!-- BLOQUE 1: HERO -->
   <section id="inicio" class="hero">
     <div class="hero-texto">
@@ -389,25 +391,37 @@
 
 
 <script>
-// Menú hamburguesa
+// Menú hamburguesa con sidebar
 (function () {
   var btn = document.getElementById('hamburguesa');
   var nav = document.getElementById('menuNav');
-  if (!btn || !nav) return;
+  var overlay = document.getElementById('menuOverlay');
+  if (!btn || !nav || !overlay) return;
+
+  function abrir() {
+    nav.classList.add('abierto');
+    btn.classList.add('abierto');
+    overlay.classList.add('abierto');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrar() {
+    nav.classList.remove('abierto');
+    btn.classList.remove('abierto');
+    overlay.classList.remove('abierto');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
 
   btn.addEventListener('click', function () {
-    var abierto = nav.classList.toggle('abierto');
-    btn.classList.toggle('abierto', abierto);
-    btn.setAttribute('aria-expanded', abierto);
+    nav.classList.contains('abierto') ? cerrar() : abrir();
   });
 
-  // Cerrar al pulsar un enlace
+  overlay.addEventListener('click', cerrar);
+
   nav.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      nav.classList.remove('abierto');
-      btn.classList.remove('abierto');
-      btn.setAttribute('aria-expanded', 'false');
-    });
+    a.addEventListener('click', cerrar);
   });
 })();
 

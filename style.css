@@ -882,6 +882,19 @@ a {
 }
 }
 
+/* Overlay y sidebar — siempre presentes en el DOM, ocultos por defecto */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 23, 18, 0.5);
+  z-index: 199;
+}
+
+.menu-overlay.abierto {
+  display: block;
+}
+
 @media (max-width: 650px) {
   .navbar {
     position: sticky;
@@ -889,9 +902,9 @@ a {
     margin: 0;
     border-radius: 0;
     padding: 14px 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
-    gap: 0;
+    align-items: center;
   }
 
   .hamburguesa {
@@ -904,9 +917,8 @@ a {
     border: none;
     cursor: pointer;
     padding: 0;
-    margin-right: 14px;
     flex-shrink: 0;
-    align-self: center;
+    z-index: 201;
   }
 
   .hamburguesa span {
@@ -934,31 +946,41 @@ a {
 
   .logo {
     flex: 1;
+    justify-content: center;
   }
 
   .logo img {
     height: 52px;
   }
 
+  /* Sidebar deslizante desde la izquierda */
   .menu {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: -290px;
+    width: 260px;
+    height: 100vh;
+    background: #FFF1D0;
     flex-direction: column;
-    width: 100%;
-    padding: 10px 0 4px;
-    margin-top: 12px;
-    border-top: 1px solid rgba(43, 23, 18, 0.12);
+    padding: 90px 28px 40px;
     gap: 0;
-  }
-
-  .menu.abierto {
+    transition: left 0.32s ease;
+    z-index: 200;
+    box-shadow: 6px 0 24px rgba(43, 23, 18, 0.18);
     display: flex;
   }
 
+  .menu.abierto {
+    left: 0;
+  }
+
   .menu a {
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: 800;
     margin-left: 0;
-    padding: 13px 4px;
-    border-bottom: 1px solid rgba(43, 23, 18, 0.06);
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(43, 23, 18, 0.08);
+    color: #2B1712;
   }
 
   .menu a::after {
@@ -967,9 +989,12 @@ a {
 
   .menu .menu-cta {
     text-align: center;
-    margin: 12px 0 4px;
-    padding: 14px;
+    margin: 20px 0 0;
+    padding: 15px;
     box-shadow: none;
+    border-bottom: none;
+    color: #FFF1D0;
+    border-radius: 999px;
   }
 
   .hero-texto h1 {
