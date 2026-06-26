@@ -103,6 +103,12 @@ a {
   padding: 14px 24px;
   border-radius: 999px;
   box-shadow: 0 10px 22px rgba(198, 40, 30, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu .menu-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 .menu .menu-cta::after {
@@ -508,6 +514,12 @@ a {
   border-radius: 999px;
   font-weight: 900;
   text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton-mapa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 /* RESPONSIVE */
@@ -533,6 +545,131 @@ a {
   .ubicacion-botones {
     justify-content: center;
   }
+}
+
+/* =========================
+   RESEÑAS / CARRUSEL
+========================= */
+
+.resenas {
+  padding: 90px 70px;
+  background: #fff8e8;
+  text-align: center;
+}
+
+.carrusel-viewport {
+  overflow: hidden;
+  margin: 46px 0 24px;
+}
+
+.carrusel-track {
+  display: flex;
+  gap: 28px;
+  will-change: transform;
+}
+
+.resena-card {
+  background: #FFF1D0;
+  border-radius: 18px;
+  padding: 28px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  flex-shrink: 0;
+}
+
+.resena-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resena-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.resena-inicial {
+  color: #FFF1D0;
+  font-weight: 900;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resena-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.resena-nombre {
+  color: #2B1712;
+  font-weight: 900;
+  font-size: 15px;
+}
+
+.resena-guia {
+  color: #F26A21;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.resena-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resena-estrellas {
+  color: #F6C343;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.resena-fecha {
+  color: #4A2A20;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.resena-card p {
+  color: #4A2A20;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.carrusel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.carrusel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #D4B89A;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.carrusel-dot.activo {
+  background: #C6281E;
+  transform: scale(1.35);
+}
+
+.resenas-cta {
+  margin-top: 10px;
 }
 
 /* =========================
@@ -777,5 +914,30 @@ a {
 
   .contacto-card {
     padding: 36px 24px;
+  }
+
+  .resenas {
+    padding: 60px 20px;
+  }
+
+  .carrusel-viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .carrusel-track {
+    transform: none !important;
+    transition: none !important;
+    gap: 16px;
+  }
+
+  .resena-card {
+    width: 80vw !important;
+    scroll-snap-align: start;
+  }
+
+  .carrusel-dots {
+    display: none;
   }
 }
