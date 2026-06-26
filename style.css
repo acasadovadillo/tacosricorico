@@ -1005,27 +1005,53 @@ a {
 
   .hero {
     min-height: auto;
-    padding: 36px 20px 40px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .hero-imagen {
-    display: none;
+    display: block;
+    order: -1;
+    width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .hero-imagen img {
+    width: 100%;
+    height: 52vw;
+    object-fit: cover;
+    object-position: center top;
+    clip-path: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .hero-texto {
+    padding: 24px 20px 32px;
+  }
+
+  .hero .etiqueta {
+    font-size: 11px;
+    margin-bottom: 10px;
   }
 
   .hero-texto h1 {
-    font-size: clamp(30px, 9vw, 42px);
-    line-height: 1.05;
-    margin-bottom: 16px;
+    font-size: clamp(26px, 7.5vw, 36px);
+    line-height: 1.08;
+    margin-bottom: 12px;
   }
 
   .hero-texto p {
-    font-size: 16px;
-    margin-bottom: 24px;
+    font-size: 15px;
+    margin-bottom: 20px;
   }
 
   .hero-botones {
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
   .boton,
