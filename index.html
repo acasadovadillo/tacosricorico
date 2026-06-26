@@ -11,11 +11,17 @@
 
   <!-- CABECERA -->
   <header class="navbar">
+    <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <a href="#inicio" class="logo">
       <img src="img/logo-tacos-ricorico.png" alt="Tacos Rico Rico">
     </a>
 
-    <nav class="menu">
+    <nav class="menu" id="menuNav">
       <a href="tel:919515822" class="menu-cta">PIDE AHORA</a>
       <a href="#productos">Especialidades</a>
       <a href="#carta">Carta</a>
@@ -383,6 +389,29 @@
 
 
 <script>
+// Menú hamburguesa
+(function () {
+  var btn = document.getElementById('hamburguesa');
+  var nav = document.getElementById('menuNav');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function () {
+    var abierto = nav.classList.toggle('abierto');
+    btn.classList.toggle('abierto', abierto);
+    btn.setAttribute('aria-expanded', abierto);
+  });
+
+  // Cerrar al pulsar un enlace
+  nav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      nav.classList.remove('abierto');
+      btn.classList.remove('abierto');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+// Carrusel de reseñas
 (function () {
   const track = document.getElementById('carruselTrack');
   const dotsContainer = document.getElementById('carruselDots');
